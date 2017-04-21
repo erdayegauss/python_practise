@@ -1,0 +1,18 @@
+import os
+import io
+import requests
+from bs4 import BeautifulSoup
+import urllib2
+
+url_to_scrape = 'https://secured.sirvoy.com/engine/book_results?id=535628d86a05b&check_in=2017-04-24&check_out=2017-04-26&adults=1&rt=sbw_widget_1&v=2&t=0e5f1891-dd28-4f09-a53b-bc331f16d3e1';
+ 
+#r = requests.get(url_to_scrape);
+ 
+soup = BeautifulSoup(urllib2.urlopen(url_to_scrape),"html.parser");
+
+out=soup.find("select",id="req_units_roomtype_4565101");
+print(out);
+
+
+out=soup.find("div",class_="book_errorMessage");
+print(out);
