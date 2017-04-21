@@ -1,0 +1,24 @@
+import os
+import io
+import requests
+from bs4 import BeautifulSoup
+import urllib2
+
+url_to_scrape = 'http://www.baidu.com';
+ 
+#r = requests.get(url_to_scrape);
+ 
+soup = BeautifulSoup(urllib2.urlopen(url_to_scrape),"html.parser");
+
+out=soup.select("#wrapper");
+print(out);
+temp1=out[0].findAll("a");
+for link in temp1:
+	print(link['href']);
+#
+
+
+for temp in out:
+	temp1=temp.findAll('a');
+	for link in temp1:
+		print(link['href']);
